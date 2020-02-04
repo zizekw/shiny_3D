@@ -36,7 +36,7 @@ ui <- navbarPage(theme = shinythemes::shinytheme("cerulean"), title = "3D Plot f
                  tags$body(tags$i("© 2019 Bill Zizek"))
 )
 
-# Define server logic required to draw a histogram
+# Define server logic 
 server <- function(input, output) {
   options(shiny.maxRequestSize=3000*1024^2)
   # options(rgl.printRglwidget = TRUE)
@@ -54,7 +54,7 @@ server <- function(input, output) {
   # }) 
   
   data <- # reactive({
-    rawData %>% filterFile(file = 1) # just incase they upload multiple files, nvm this should be accounted for
+    rawData %>% filterFile(file = 1) # just incase they upload multiple files, update: nvm this should be accounted for
   # })
   
   hd <- # reactive({
@@ -142,38 +142,3 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
-
-
-#### notes ####
-# library(MSnbase)
-# data_dir <- dir("C:/Users/Seroclinix/Documents/ace_validation/data/mzML/tmp",full.names = TRUE, all.files = FALSE, recursive = TRUE)
-# rawData <- readMSData(files = data_dir,
-#                       msLevel. = 1, centroided. = FALSE, 
-#                       mode = "onDisk", verbose = TRUE)
-# 
-# library(rgl)
-# # library(rglwidget)
-# 
-# temp <- rawData #%>% filterFile(file = 1)
-# 
-# rtmin <- 5
-# rtmax <- 35
-# 
-# mzmin <- 184.0
-# mzmax <- 184.2
-# 
-# res <- 0.0005 # slider
-# 
-# ncols <- 1000000 # slider
-# 
-# hd <- header(temp)
-# ms1 <- which(hd$msLevel == 1) # unnecessary - everything is MS1
-# rtsel <- hd$retentionTime[ms1] / 60 > rtmin &
-#     hd$retentionTime[ms1] / 60 < rtmax
-# 
-# M <- MSmap(temp, ms1[rtsel], mzmin, mzmax, res, zeroIsNA=TRUE)
-# 
-# dd <- as(M, "data.frame")
-# 
-# plot3d(dd$mz, dd$rt, dd$intensity, type = "h", col = hcl.colors(ncols, palette = "BluGrn"), # hcl.pals() to get pals
-#                                        xlab = "M/Z", ylab = "Migration time", zlab = "", main = paste0("EIE for m/z ",mzmin,"-",mzmax), box = FALSE)
