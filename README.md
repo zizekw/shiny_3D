@@ -6,5 +6,5 @@ A simple, proof of concept Shiny app to plot chromatographically separated open 
 
 ![](./images/final.gif)
 
-See my bog post titled "{shiny} Interface to create interactive, 3D plots of Mass Spec data - but Dockerizing it" on my [personal blog](https://bill-zizek.ca/).
+See my blog post titled "{shiny} Interface to create interactive, 3D plots of Mass Spec data - but Dockerizing it" on my [personal blog](https://bill-zizek.ca/post/shiny-3d-ms-docker/shiny-3d-ms-docker/).
 
